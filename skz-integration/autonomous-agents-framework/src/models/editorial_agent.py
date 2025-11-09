@@ -6,7 +6,7 @@ Specialized agent for editorial workflow management, decision support, and coord
 import json
 from typing import Dict, List, Any, Optional
 from datetime import datetime, timedelta
-from src.models.agent import Agent, AgentCapability, MessageType, db, WorkflowInstance
+from models.agent import Agent, AgentCapability, MessageType, db, WorkflowInstance
 import openai
 import os
 

@@ -4,9 +4,9 @@ Provides REST endpoints for agent management and interaction
 """
 
 from flask import Blueprint, request, jsonify
-from src.models.agent import Agent, Message, WorkflowInstance, AgentCapability, MessageType, agent_registry, db
-from src.models.research_agent import ResearchDiscoveryAgent
-from src.models.editorial_agent import EditorialOrchestrationAgent
+from models.agent import Agent, Message, WorkflowInstance, AgentCapability, MessageType, agent_registry, db
+from models.research_agent import ResearchDiscoveryAgent
+from models.editorial_agent import EditorialOrchestrationAgent
 import json
 from datetime import datetime, timedelta
 
