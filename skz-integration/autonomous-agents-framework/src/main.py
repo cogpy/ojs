@@ -11,14 +11,20 @@ from datetime import datetime, timedelta
 import random
 import time
 
-# Import manuscript automation components
-from routes.manuscript_automation_api import manuscript_automation_bp, init_automation
+# Import manuscript automation components (optional)
+try:
+    from routes.manuscript_automation_api import manuscript_automation_bp, init_automation
+    MANUSCRIPT_AUTOMATION_AVAILABLE = True
+except ImportError:
+    MANUSCRIPT_AUTOMATION_AVAILABLE = False
+    print("Warning: Manuscript automation module not available")
 
 app = Flask(__name__)
 CORS(app)
 
-# Register manuscript automation blueprint
-app.register_blueprint(manuscript_automation_bp)
+# Register manuscript automation blueprint if available
+if MANUSCRIPT_AUTOMATION_AVAILABLE:
+    app.register_blueprint(manuscript_automation_bp)
 
 # In-memory storage for demo purposes
 agents_data = {
@@ -698,8 +704,11 @@ if __name__ == '__main__':
         'enable_notifications': True
     }
     
-    init_automation(automation_config)
-    print("🤖 Manuscript Processing Automation initialized")
+    if MANUSCRIPT_AUTOMATION_AVAILABLE:
+        init_automation(automation_config)
+        print("🤖 Manuscript Processing Automation initialized")
+    else:
+        print("⚠️ Manuscript Processing Automation not available - running without it")
     
     app.run(host='0.0.0.0', port=5000, debug=False)
 

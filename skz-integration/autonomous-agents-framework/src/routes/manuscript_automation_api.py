@@ -9,7 +9,7 @@ from typing import Dict, Any
 import json
 from datetime import datetime
 
-from src.models.manuscript_processing_automation import (
+from models.manuscript_processing_automation import (
     ManuscriptProcessingAutomation, 
     AutomationPriority,
     ManuscriptStatus
